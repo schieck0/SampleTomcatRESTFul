@@ -53,7 +53,7 @@
             <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
             <id>openshift</id>
             <build>
-                <finalName>test</finalName>
+                <finalName>restsample</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.tomcat.maven</groupId>
@@ -63,15 +63,23 @@
                             <path>/</path>
                             <finalName>executable.jar</finalName>
                         </configuration>
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>exec-war-only</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
-                    <plugin>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>2.1.1</version>
-                        <configuration>
-                            <outputDirectory>webapps</outputDirectory>
-                            <warName>ROOT</warName>
-                        </configuration>
-                    </plugin>
+                    <!--<plugin>-->
+                    <!--<artifactId>maven-war-plugin</artifactId>-->
+                    <!--<version>2.1.1</version>-->
+                    <!--<configuration>-->
+                    <!--<outputDirectory>webapps</outputDirectory>-->
+                    <!--<warName>ROOT</warName>-->
+                    <!--</configuration>-->
+                    <!--</plugin>-->
                 </plugins>
             </build>
         </profile>
